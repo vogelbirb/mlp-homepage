@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Matheus Leitzke Paredes, software engineer specializing in Rust and React/JavaScript. Open-source developer & self-hoster. App/AI Developer at Yung Drung Inc.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet" media=print>
+    <title>MLP's Homepage</title>
+    <style>
+        /* Crazy stylesheet, I know. I'm a software engineer, not a CSS wizard. Thank god we have the mdn web docs, Stack Overflow, and ChatGPT. */
+        body {
+            font-family: "Roboto Mono", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        .only-bottom-margin {
+            margin-top: 0;
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        .no-bullet-points {
+            list-style-type: none;
+            /* Remove bullets */
+            padding: 0;
+            /* Remove padding */
+            margin: 0;
+            /* Remove margins */
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .fade {
+            display: none;
+            opacity: 0;
+            transition:
+                opacity 1s,
+                display 1s allow-discrete;
+        }
+
+        .show {
+            opacity: 1;
+            display: inline;
+        }
+
+        @starting-style {
+            .show {
+                opacity: 0;
+            }
+        }
+
+        #dropdown_btn {
+            width: 75px;
+            text-align: center;
+        }
+	h1 {
+	    font-size: 1.75em;
+	    text-align: center;
+	}
+
+        h2 {
+	    font-size: 1.5em;
+	    font-weight: bold;
+        }
+
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Matheus Leitzke Paredes",
+  "alternateName": ["Matheus Paredes", "Matheus LP"],
+  "jobTitle": "App/AI Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Yung Drung",
+    "url": "https://lofc.io"
+  },
+  "email": "contact@matheuslp.com",
+  "url": "https://matheuslp.com",
+  "sameAs": [
+    "https://github.com/mrchilliballs",
+    "https://gitlab.com/WildSir"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "English" },
+    { "@type": "Language", "name": "Portuguese" }
+  ]
+}
+</script>
+</head>
+
+<body>
+    <header>
+        <h1>MLP's Homepage</h1>
+    </header>
+    <main>
+        <article>
+            <h2>My Bio</h2>
+	    <p>Hi, I'm Matheus, a software engineer. I primarily work with Rust and React/JavaScript. I love open-source software and prefer to self-host my services. Shoot me an email at <a href ="mailto:contact@matheuslp.com">contact@matheuslp.com</a>.<br/>Currently working as an App/AI Developer at Yung Drung, part of the <a href="https://lofc.io">League of the Free Cities</a>.</p>
+	    <p> Check out my blog -> <a href="https://blog.matheuslp.com">blog.matheuslp.com</a></p>
+            <h2> Projects & Experiments</h2>
+	    <!-- Inverse Links here too -->
+            <ol>
+                <li><a href="https://github.com/mrchilliballs/game-of-life">Conway's Game of Life</a>
+                    <ul class="no-bullet-points">
+                        <li></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/mrchilliballs/chip8-interpreter">A Chip-8 Interpreter</a>
+                    <ul>
+                        <li class="no-bullet-points">
+                            <figure class="only-bottom-margin">
+                                <figcaption><a
+                                        href="https://johnearnest.github.io/chip8Archive/play.html?p=br8kout">Br8kout by
+                                        SharpenedSpoon</a> running on the emulator.</figcaption>
+                            </figure>
+                        </li>
+                        <li>You may be asking: what's a <em>Chip-8</em>? <button id="dropdown_btn">Expand...</button>
+                            <span id="hidden_content" class="fade">"Chip-8 is a simple, interpreted, programming
+                                language which was first used on some do-it-yourself computer systems in the late 1970s
+                                and early 1980s. These computers typically were designed to use a television as a
+                                display, had between 1 and 4K of RAM, and used a 16-key hexadecimal keypad for input.
+                                The interpreter took up only 512 bytes of memory, and programs, which were entered into
+                                the computer in hexadecimal, were even smaller." - <a
+                                    href="http://devernay.free.fr/hacks/chip8/C8TECH10.HTM">Cowgod's Chip-8 Technical
+                                    Reference</a>.</span></li>
+                    </ul>
+                </li>
+                <li><a href="https://github.com/mrchilliballs/user-manager">User Managment System </a>
+                    <ul>
+                        <li>A simple CLI tool for managing a database of users.</li>
+                    </ul>
+                </li>
+		<li>PC Building
+			<ul>
+				<li class="no-bullet-points">
+					<figure class="only-bottom-margin"><figcaption>I purchased the components and built my PC. I recommend you do to, it's so much cheaper than buying a prebuilt and also isn't too hard. You'll learn a lot too!</figcaption>
+				</li>
+			</ul>
+
+		<li>Hackintosing
+			<ul>
+				<li class="no-bullet-points">
+					<figure class="only-bottom-margin"><figcaption>I got OS X High Sierra running on a Toshiba P755 through OpenCore 🎉.</figcaption>
+				</li>
+				<li class="no-bullet-points">
+					<figure class="only-bottom-margin"><figcaption>I got OS X Sequoia running on a my personal desktop as well.</figcaption>
+				</li>
+			</ul>
+
+            </ol>
+        </article>
+        <article>
+            <h2>Certificates</h2>
+            <ol>
+                <li> <a href="https://coursera.org/share/d5f527c3973a57fe30c27687c9987e1b">Object-Oriented Data
+                        Structures in C++</a></li>
+                <li> <a href="https://coursera.org/share/b21c00a0eb38e27af3a4f4b35ab28718">Ordered Data Structures</a>
+                </li>
+		<li>Projects are better, but more to come!</li>
+            </ol>
+        </article>
+	<!-- Contact section?? -->
+    </main>
+    <nav>
+        <h2>Sitemap</h2>
+        <ul class="margin-list">
+            <li>
+                <a href="https://matheuslp.com">Home</a>
+            </li>
+            <li>
+		    <a href="https://blog.matheuslp.com">Blog</a>
+            </li>
+            <li>
+                <a href="https://cloud.matheuslp.com">Nextcloud Login</a>
+            </li>
+            <li>
+                <a href="https://panel.matheuslp.com">Pelican Panel Login</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Funny Bird Videos</a>
+            </li>
+            <li>
+                Socks5 -> <code>proxy.matheuslp.com:1080</code>
+            </li>
+            <li>
+                HTTP -> <code>proxy.matheuslp.net:3128</code>
+            </li>
+            <li>
+                Minecraft -> <code>play.matheuslp.com:25565/19132</code>
+            </li>
+            <li>
+                Factorio -> <code>play.matheuslp.com:34197</code>
+            </li>
+    </nav>
+    <aside>
+        <ul class="side-notes no-bullet-points">
+            <!-- Inverse styled links in the future here? -->
+            <li><small>This website is self-hosted on a Rocket server behind Caddy by <a
+                        href="https://github.com/mrchilliballs">Matheus Leitzke Paredes</a> (mrchilliballs). It uses the <a
+                        href="https://github.com/markdowncss/retro">Retro</a> Markdown Theme.</small></li>
+    </aside>
+    <script>
+        let btn = document.querySelector("#dropdown_btn");
+        let content = document.querySelector("#hidden_content");
+        const divElem = document.querySelector("#hidden_content");
+        const btnElem = document.querySelector("#dropdown_btn");
+
+        btnElem.addEventListener("click", showHide);
+
+        function showHide() {
+            divElem.classList.toggle("show");
+            if (divElem.classList.contains("show")) {
+                btnElem.innerText = "Hide";
+            } else {
+                btnElem.innerText = "Expand...";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
