@@ -1,5 +1,5 @@
 [package]
-name = "mlp_homepage"
+name = "mlp-homepage"
 version = "0.1.0"
 edition = "2021"
 
