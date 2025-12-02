@@ -1,8 +1,8 @@
 #[macro_use]
 extern crate rocket;
+use rocket::fs::NamedFile;
 use rocket::http::Status;
 use rocket::request::{FromRequest, Outcome, Request};
-use rocket::fs::NamedFile;
 use rocket::tokio::{
     task,
     time::{sleep, Duration},
@@ -14,6 +14,19 @@ async fn index() -> NamedFile {
     NamedFile::open("index.html").await.ok().unwrap()
 }
 
+#[get("/ousers/profiles/minecraft/Flying_egg")]
+async fn profile() -> NamedFile {
+    NamedFile::open("Flying_egg.json").await.ok().unwrap()
+}
+
+#[get("/longurl123/session/minecraft/profile/bc49f1d2a2f242f68b7105ebfb220def")]
+async fn uuid() -> NamedFile {
+    NamedFile::open("bc49f1d2a2f242f68b7105ebfb220def.json")
+        .await
+        .ok()
+        .unwrap()
+}
+
 struct CheckKey(String);
 
 #[async_trait]
@@ -22,9 +35,11 @@ impl<'r> FromRequest<'r> for CheckKey {
     async fn from_request(request: &'r Request<'_>) -> Outcome<Self, Self::Error> {
         match request.headers().get_one("apiKey") {
             Some(key) => match key.parse::<u32>() {
-                Ok(parsed_key) if parsed_key % 3 == 0 => Outcome::Success(CheckKey(key.to_string())),
+                Ok(parsed_key) if parsed_key % 3 == 0 => {
+                    Outcome::Success(CheckKey(key.to_string()))
+                }
                 _ => Outcome::Error((Status::Forbidden, "API key is invalid.")),
-            }
+            },
             None => Outcome::Error((Status::Forbidden, "API key not provided.")),
         }
     }
@@ -73,7 +88,7 @@ async fn blocking() -> io::Result<Vec<u8>> {
 async fn main() -> Result<(), rocket::Error> {
     let _rocket = rocket::build()
         .mount("/hello", routes![world, post_world])
-        .mount("/", routes![delay, blocking, key, index])
+        .mount("/", routes![delay, blocking, key, index, profile, uuid])
         .launch()
         .await?;
 
