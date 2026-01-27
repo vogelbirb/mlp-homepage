@@ -109,11 +109,12 @@
     </header>
     <main>
         <section>
-            <h2>My Bio</h2>
+            <h2>About Me</h2>
             <p>Hi, I'm Matheus, a software engineer. I primarily work with Rust and React/JavaScript. I love open-source
-                software and prefer to self-host my services. Shoot me an email at <a
-                    href="mailto:contact@matheuslp.com">contact@matheuslp.com</a>.
-                </p>
+                software and prefer to self-host my services. Feel free to contact me at <a
+                    href="mailto:contact@matheuslp.com">contact@matheuslp.com</a>, except for large money transfers from
+                African countries or such.
+            </p>
             <p> Check out my blog → <a href="https://blog.matheuslp.com">blog.matheuslp.com</a></p>
         </section>
         <section>
@@ -123,19 +124,18 @@
                 <li><a href="https://github.com/mrchilliballs/game-of-life">Conway's Game of Life</a>
                     <figure class="only-bottom-margin">
                         <img src="https://cloud.matheuslp.com/s/wfgNnNP3Wfjn6A7/download/conways_game_of_life.webp"
-                                width=300 alt="Conway's Game of Life running on a terminal application">
+                            width=300 alt="Conway's Game of Life running on a terminal application">
                 </li>
                 <li><a href="https://github.com/mrchilliballs/chip8-interpreter">A Chip-8 Interpreter</a>
                     <figure class="only-bottom-margin"><img
-                        src="https://cloud.matheuslp.com/s/yBgofMita4MRgtS/download/breakout.webp"
-                        height=200 alt="Breakout, a classic arcade video game running on the interpreter">
-                    <figcaption><a
-                        href="https://johnearnest.github.io/chip8Archive/play.html?p=br8kout">Br8kout
-                        by
-                        SharpenedSpoon</a> running on the emulator.</figcaption>
+                            src="https://cloud.matheuslp.com/s/yBgofMita4MRgtS/download/breakout.webp" height=200
+                            alt="Breakout, a classic arcade video game running on the interpreter">
+                        <figcaption><a href="https://johnearnest.github.io/chip8Archive/play.html?p=br8kout">Br8kout
+                                by
+                                SharpenedSpoon</a> running on the emulator.</figcaption>
                     </figure>
                     <ul>
-                       <li>You may be asking: what's a <em>Chip-8</em>? <button id="dropdown_btn">Expand...</button>
+                        <li>You may be asking: what's a <em>Chip-8</em>? <button id="dropdown_btn">Expand...</button>
                             <span id="hidden_content" class="fade">"Chip-8 is a simple, interpreted, programming
                                 language which was first used on some do-it-yourself computer systems in the late 1970s
                                 and early 1980s. These computers typically were designed to use a television as a
@@ -230,9 +230,7 @@
                             href="https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321">Designing
                             Data-Internsive Applications</a></em>
                     <ul>
-                        <li>I'm still reading through this one, but it seems to have some really good information for
-                            people who to want to move from a beginner or intermediate level in software engineering to
-                            more advanced.</li>
+                        <li>I'm still reading through this one, so far it has been great</li>
                     </ul>
                 </li>
             </ol>
@@ -257,31 +255,19 @@
             <li>
                 <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Funny Bird Videos</a>
             </li>
-            <li>
-                Socks5 -> <code>proxy.matheuslp.com:1080</code>
-            </li>
-            <li>
-                HTTP -> <code>proxy.matheuslp.net:3128</code>
-            </li>
-            <li>
-                Minecraft -> <code>play.matheuslp.com:25565/19132</code>
-            </li>
-            <li>
-                Factorio -> <code>play.matheuslp.com:34197</code>
-            </li>
     </nav>
     <aside>
         <ul class="side-notes no-bullet-points">
             <!-- Inverse styled links in the future here? -->
-            <li><small>This website is self-hosted on a Rocket server behind Caddy by <a
-                        href="https://github.com/mrchilliballs">Matheus L. P.</a> (mrchilliballs). It uses the
-                    <a href="https://github.com/markdowncss/retro">Retro</a> Markdown Theme.</small></li>
+            <li><small><a href="https://github.com/mrchilliballs/">View page source</a> | Last updated: <span
+                        id="last_updated">loading...</span></small></li>
     </aside>
     <script>
         let btn = document.querySelector("#dropdown_btn");
         let content = document.querySelector("#hidden_content");
         const divElem = document.querySelector("#hidden_content");
         const btnElem = document.querySelector("#dropdown_btn");
+        const lastUpdatedElem = document.querySelector("#last_updated");
 
         btnElem.addEventListener("click", showHide);
 
@@ -294,6 +280,30 @@
             }
         }
 
+        async function getLatestCommitDate() {
+            const url = "https://api.github.com/repos/mrchilliballs/mlp-homepage/commits/HEAD";
+            try {
+                const response = await fetch(url, {headers: {"X-GitHub-Api-Version": "2022-11-28", "Accept": "application/vnd.github+json"}})
+                if (!response.ok) {
+                    console.error(`Response status: ${response.status}`);
+                    return "(error: check console)";
+                }
+
+                const result = await response.json();
+                return result.commit.author.date;
+            } catch (error) {
+                console.error(error.message);
+                return "(error: check console)";
+            }
+        }
+
+        async function updateLastUpdated() {
+            const date = await getLatestCommitDate();
+            console.log("this runs");
+            lastUpdatedElem.innerText = date;
+        }
+
+        window.addEventListener("load", updateLastUpdated);
     </script>
 </body>
 
